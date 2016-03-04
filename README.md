@@ -2,7 +2,7 @@
 
 > Objective-c version of HelloWorld app is available in [master branch](https://github.com/feedhenry-templates/helloworld-ios).
 
-Author: Corinne Krych   
+Author: Corinne Krych, Daniel Passos   
 Level: Intermediate  
 Technologies: Swift, iOS, RHMAP, CocoaPods.
 Summary: A demonstration of how to get started with remote cloud call in RHMAP.
@@ -43,58 +43,46 @@ If you wish to contribute to this template, the following information may be hel
 
 ### Init
 
-In ```iOS-Template-App/HomeViewController.swift``` the FH.init call is done:
+In ```helloworld-ios-app/HomeViewController.swift``` the FH.init call is done:
 ```
-- (void)viewDidLoad {  
-    override func viewDidLoad() {
-        // Initialized cloud connection
-        let successCallback:(AnyObject!) -> Void = {response in // [2]
-            print("initialized OK")
-            self.button.hidden = false
+override func viewDidLoad() {
+    result.contentInset = UIEdgeInsetsMake(20.0, 20.0, 10.0, 10.0);
+    super.viewDidLoad()
+
+    // Initialized cloud connection
+    FH.init {(resp: Response, error: NSError?) -> Void in
+        if let error = error {
+            print("FH init failed. Error = \(error)")
+            self.result.text = "Please fill in fhconfig.plist file."
         }
-        let errorCallback: (AnyObject!) -> Void = {response in  // [3]
-            if let response = response as? FHResponse {
-                print("FH init failed. Error = \(response.rawResponseAsString)")
-                self.result.text = "Please fill in fhconfig.plist file."
-            }
-        }
-        FH.initWithSuccess(successCallback, andFailure: errorCallback)  // [1]
+        print("initialized OK")
+        self.button.hidden = false
     }
 }
-
 ```
-[1] Initialize the cloud connection.
-
-[2] On successfull callback, you are ready to do other calls.
-
-[3] Log an eror.
 
 ### Cloud call
 
-In ```iOS-Template-App/HomeViewController.m``` the FH.init call is done:
+In ```helloworld-ios-app/HomeViewController.HomeViewController.swift``` the FH.init call is done:
 ```
 @IBAction func cloudCall(sender: AnyObject) {
-    let args = ["hello": name.text ?? "world"]    // [1]
-    let successCallback:(AnyObject!) -> Void = {response in
-         if let response = response as? FHResponse {
-            if let parsedRes = response.parsedResponse as? [String:String] {
-                self.result.text = parsedRes["msg"]
-            }
-        }
-    }
-    let errorCallback: (AnyObject!) -> Void = {response in
-        if let response = response as? FHResponse {
-            print("initialize fail, \(response.rawResponseAsString)")
+    name.endEditing(true)
+
+    let args = ["hello": name.text ?? "world"]
+
+    FH.cloud("hello", method: HTTPMethod.POST,
+        args: args, headers: nil,
+        completionHandler: {(resp: Response, error: NSError?) -> Void in
+        if let _ = error {
+            print("initialize fail, \(resp.rawResponseAsString)")
             self.button.hidden = true
         }
-    }
-    FH.performCloudRequest("hello", withMethod: "POST", 
-       andHeaders: nil, andArgs: args, andSuccess: successCallback, andFailure: errorCallback)  // [2]
-    }
+        if let parsedRes = resp.parsedResponse as? [String:String] {
+            self.result.text = parsedRes["msg"]
+        }
+    })
+}
 ```
-[1] Create a dictionary of arguments.
-
-[2] Make asynchronous call with its success and error callbacks.
 
 ### iOS9 and non TLS1.2 backend
 
