@@ -1,4 +1,4 @@
-# helloworld-ios-app 
+# helloworld-ios-swift [![Build Status](https://travis-ci.org/feedhenry-templates/helloworld-ios-swift.png)](https://travis-ci.org/feedhenry-templates/helloworld-ios-swift)
 
 > Objective-c version of HelloWorld app is available in [master branch](https://github.com/feedhenry-templates/helloworld-ios).
 
