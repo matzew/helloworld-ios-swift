@@ -1,6 +1,6 @@
 # helloworld-ios-swift [![Build Status](https://travis-ci.org/feedhenry-templates/helloworld-ios-swift.png)](https://travis-ci.org/feedhenry-templates/helloworld-ios-swift)
 
-> Objective-c version of HelloWorld app is available in [master branch](https://github.com/feedhenry-templates/helloworld-ios).
+> Objective-c version of HelloWorld app is available in [helloworld-ios repo](https://github.com/feedhenry-templates/helloworld-ios).
 
 Author: Corinne Krych, Daniel Passos   
 Level: Intermediate  
@@ -10,7 +10,7 @@ Community Project : [Feed Henry](http://feedhenry.org)
 Target Product: RHMAP  
 Product Versions: RHMAP 3.7.0+   
 Source: https://github.com/feedhenry-templates/helloworld-ios  
-Prerequisites: fh-ios-sdk : 3.+, Xcode : 7.2+, iOS SDK : iOS7+, CocoaPods  0.39+
+Prerequisites: fh-ios-sdk : 3.+, Xcode : 7.2+, iOS SDK : iOS7+, CocoaPods 1.0.1+
 
 ## What is it?
 
