@@ -1,7 +1,9 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-xcodeproj 'helloworld-ios-app.xcodeproj'
+project 'helloworld-ios-app.xcodeproj'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'FeedHenry', '~> 4.1.1'
+target 'helloworld-ios-app' do
+	pod 'FeedHenry', '4.1.1'
+end
