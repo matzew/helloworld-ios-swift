@@ -1,6 +1,6 @@
 # helloworld-ios-swift [![Build Status](https://travis-ci.org/feedhenry-templates/helloworld-ios-swift.png)](https://travis-ci.org/feedhenry-templates/helloworld-ios-swift)
 
-> Objective-c version of HelloWorld app is available in [helloworld-ios repo](https://github.com/feedhenry-templates/helloworld-ios).
+> Obj-C version is available [here](https://github.com/feedhenry-templates/helloworld-ios).
 
 Author: Corinne Krych, Daniel Passos   
 Level: Intermediate  
@@ -25,19 +25,16 @@ If you do not have access to a RHMAP instance, you can sign up for a free instan
 This application and its cloud services are available as a project template in RHMAP as part of the "Native iOS Hello World Project" template.
 
 ### Local Clone (ideal for Open Source Development)
+
 If you wish to contribute to this template, the following information may be helpful; otherwise, RHMAP and its build facilities are the preferred solution.
 
 ## Build instructions
 
 1. Clone this project
-
-2. Populate ```iOS-Template-App/fhconfig.plist``` with your values as explained [here](http://docs.feedhenry.com/v3/dev_tools/sdks/ios.html#ios-configure).
-
-3. Run ```pod install``` 
-
-4. Open Helloworld-app-iOS.xcworkspace
-
-5. Run the project
+1. Populate ```iOS-Template-App/fhconfig.plist``` with your values as explained [here](http://docs.feedhenry.com/v3/dev_tools/sdks/ios.html#ios-configure).
+1. Run ```pod install``` 
+1. Open Helloworld-app-iOS.xcworkspace
+1. Run the project
  
 ## How does it work?
 
@@ -64,6 +61,7 @@ override func viewDidLoad() {
 ### Cloud call
 
 In ```helloworld-ios-app/HomeViewController.HomeViewController.swift``` the FH.init call is done:
+
 ```
 @IBAction func cloudCall(sender: AnyObject) {
     name.endEditing(true)
